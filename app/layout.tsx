@@ -21,6 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+      </head>
       <body
         className={
           (opensans.className, "w-full bg-emeleblack text-white p-5 md:p-10")
