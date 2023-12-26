@@ -1,11 +1,20 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 
 const About = () => {
   const abouttext = useRef(null);
   const text = useRef(null);
+  const [isMouseOver, setIsMouseOver] = useState(false);
+
+  const handleMouseOver = () => {
+    setIsMouseOver(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsMouseOver(false);
+  };
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -27,35 +36,15 @@ const About = () => {
       { opacity: 1, y: 50 },
       "+=1"
     );
-
-    const animation = gsap.to(".emeleimg", {
-      paused: true,
-      opacity: 1,
-      scale: 1,
-    });
-
-    const handleMouseOver = () => {
-      animation.play(); // Play the animation when mouseover occurs
-    };
-
-    const handleMouseOut = () => {
-      animation.reverse(); // Reverse the animation when mouseout occurs
-    };
-
-    // Add event listeners to the text element
-    if (text.current) {
-      text.current.addEventListener("mouseover", handleMouseOver);
-      text.current.addEventListener("mouseout", handleMouseOut);
-    }
-
-    // Clean up event listeners
-    return () => {
-      if (text.current) {
-        text.current.removeEventListener("mouseover", handleMouseOver);
-        text.current.removeEventListener("mouseout", handleMouseOut);
-      }
-    };
   }, []);
+
+  useLayoutEffect(() => {
+    if (isMouseOver) {
+      gsap.to(".emeleimg", { opacity: 1, scale: 1, duration: 0.3 });
+    } else {
+      gsap.to(".emeleimg", { opacity: 0, scale: 0.98, duration: 0.3 });
+    }
+  }, [isMouseOver]);
 
   return (
     <div
@@ -68,7 +57,12 @@ const About = () => {
       </div>
       <h2 className="relative z-[1]">
         I am{" "}
-        <span ref={text} className="emele-bg">
+        <span
+          ref={text}
+          onMouseOver={handleMouseOver}
+          onMouseOut={handleMouseOut}
+          className="emele-bg"
+        >
           Emele Arthur-Hayford
         </span>
         .
