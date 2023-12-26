@@ -7,10 +7,11 @@ import React, { useLayoutEffect, useRef } from "react";
 
 const Research = () => {
   const RtriggerRef = useRef(null);
-  const ResearchContainer = useRef(null);
+  const ResearchContainer = useRef<HTMLDivElement>(null);
   gsap.registerPlugin(ScrollTrigger);
 
   useLayoutEffect(() => {
+    if (!ResearchContainer.current) return; // Add null check
     const ResearchContainerWidth = ResearchContainer.current.offsetWidth;
     const amountToScrollR = ResearchContainerWidth - window.innerWidth;
     const pinR = gsap.fromTo(
