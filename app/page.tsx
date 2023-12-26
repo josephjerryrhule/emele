@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
 import About from "./components/home/about";
 import Articles from "./components/home/articles";
+import Research from "./components/home/research";
 
 export default function Home() {
   useEffect(() => {
@@ -26,6 +27,7 @@ export default function Home() {
         <Intro />
         <About />
         <Articles />
+        <Research />
       </div>
     </main>
   );

@@ -5,27 +5,27 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useLayoutEffect, useRef } from "react";
 
-const Articles = () => {
-  const triggerRef = useRef(null);
-  const articlesContainer = useRef(null);
-
+const Research = () => {
+  const RtriggerRef = useRef(null);
+  const ResearchContainer = useRef(null);
   gsap.registerPlugin(ScrollTrigger);
+
   useLayoutEffect(() => {
-    const articlesContainerWidth = articlesContainer.current.offsetWidth;
-    const amountToScroll = articlesContainerWidth - window.innerWidth;
-    const pin = gsap.fromTo(
-      articlesContainer.current,
+    const ResearchContainerWidth = ResearchContainer.current.offsetWidth;
+    const amountToScrollR = ResearchContainerWidth - window.innerWidth;
+    const pinR = gsap.fromTo(
+      ResearchContainer.current,
       {
         translateX: 0,
         opacity: 1,
       },
       {
-        translateX: amountToScroll * 20,
+        translateX: amountToScrollR * 50,
         opacity: 0,
         ease: "none",
         duration: 1,
         scrollTrigger: {
-          trigger: triggerRef.current,
+          trigger: RtriggerRef.current,
           start: "top top",
           end: "bottom center",
           scrub: true,
@@ -35,24 +35,24 @@ const Articles = () => {
     );
 
     return () => {
-      pin.kill();
+      pinR.kill();
     };
   }, []);
 
   return (
     <div className="w-full flex flex-col justify-center gap-[31px] min-h-screen">
       <div className="bg-emelered rounded-[20px] p-[6px_32px] font-bold w-fit text-[20px] leading-normal relative z-[1]">
-        Articles
+        Research Works
       </div>
       <div
-        className="articles-wrapper w-full overflow-x-hidden"
-        ref={triggerRef}
+        className="research-wrapper w-full overflow-x-hidden"
+        ref={RtriggerRef}
       >
         <div
           className="w-full flex items-start gap-[31px]"
-          ref={articlesContainer}
+          ref={ResearchContainer}
         >
-          {postArticles.map((article, index) => (
+          {postArticles.map((article, i) => (
             <div
               key={article.id}
               className="flex flex-col gap-5 flex-shrink-0 w-full md:w-1/3 rounded-[5px]"
@@ -84,4 +84,4 @@ const Articles = () => {
   );
 };
 
-export default Articles;
+export default Research;

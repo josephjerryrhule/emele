@@ -21,9 +21,9 @@ const About = () => {
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".section",
+        trigger: ".about-wrapper",
         scrub: true,
-        start: "top center",
+        start: "top bottom",
         end: "bottom bottom",
       },
     });
@@ -47,39 +47,41 @@ const About = () => {
   }, [isMouseOver]);
 
   return (
-    <div
-      className="w-full text-5xl md:text-[98px] text-[#d2d2d2] font-bold md:leading-[100px] flex flex-col justify-center opacity-80 md:opacity-0 min-h-screen relative"
-      ref={abouttext}
-      id="about"
-    >
-      <div className="bg-emelered rounded-[20px] p-[6px_32px] font-bold w-fit text-[20px] leading-normal relative z-[1]">
-        About
+    <div className="about-wrapper">
+      <div
+        className="w-full text-5xl md:text-[98px] text-[#d2d2d2] font-bold md:leading-[100px] flex flex-col justify-center opacity-80 md:opacity-0 min-h-screen relative"
+        ref={abouttext}
+        id="about"
+      >
+        <div className="bg-emelered rounded-[20px] p-[6px_32px] font-bold w-fit text-[20px] leading-normal relative z-[1]">
+          About
+        </div>
+        <h2 className="relative z-[1]">
+          I am{" "}
+          <span
+            ref={text}
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}
+            className="emele-bg"
+          >
+            Emele Arthur-Hayford
+          </span>
+          .
+          <br />
+          A Medical Laboratory Scientist.
+          <br />A Digital Marketer, Founder of WMF.
+        </h2>
+        <div className="absolute bottom-0 right-0 text-[12px] font-normal uppercase z-[1]">
+          Scroll
+        </div>
+        <Image
+          src="/emele.jpg"
+          alt="Emele"
+          width={100}
+          height={100}
+          className="absolute w-full h-full object-cover emeleimg z-0 opacity-0 scale-[0.98]"
+        />
       </div>
-      <h2 className="relative z-[1]">
-        I am{" "}
-        <span
-          ref={text}
-          onMouseOver={handleMouseOver}
-          onMouseOut={handleMouseOut}
-          className="emele-bg"
-        >
-          Emele Arthur-Hayford
-        </span>
-        .
-        <br />
-        A Medical Laboratory Scientist.
-        <br />A Digital Marketer, Founder of WMF.
-      </h2>
-      <div className="absolute bottom-0 right-0 text-[12px] font-normal uppercase z-[1]">
-        Scroll
-      </div>
-      <Image
-        src="/emele.jpg"
-        alt="Emele"
-        width={100}
-        height={100}
-        className="absolute w-full h-full object-cover emeleimg z-0 opacity-0 scale-[0.98]"
-      />
     </div>
   );
 };
