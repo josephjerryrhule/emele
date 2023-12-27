@@ -7,6 +7,7 @@ import About from "./components/home/about";
 import Articles from "./components/home/articles";
 import Research from "./components/home/research";
 import ShowCase from "./components/home/showcase";
+import Causes from "./components/home/causes";
 
 export default function Home() {
   useEffect(() => {
@@ -30,6 +31,7 @@ export default function Home() {
         <Articles />
         <Research />
         <ShowCase />
+        <Causes />
       </div>
     </main>
   );
