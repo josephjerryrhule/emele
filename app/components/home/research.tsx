@@ -6,29 +6,24 @@ import Link from "next/link";
 import React, { useLayoutEffect, useRef } from "react";
 
 const Research = () => {
-  const RtriggerRef = useRef(null);
-  const ResearchContainer = useRef<HTMLDivElement>(null);
-  gsap.registerPlugin(ScrollTrigger);
+  const rRef = useRef(null);
+  const rCRef = useRef(null);
 
+  gsap.registerPlugin(ScrollTrigger);
   useLayoutEffect(() => {
-    if (!ResearchContainer.current) return; // Add null check
-    const ResearchContainerWidth = ResearchContainer.current.offsetWidth;
-    const amountToScrollR = ResearchContainerWidth - window.innerWidth;
-    const pinR = gsap.fromTo(
-      ResearchContainer.current,
+    const tl = gsap.fromTo(
+      rCRef.current,
       {
         translateX: 0,
-        opacity: 1,
       },
       {
-        translateX: amountToScrollR * 50,
-        opacity: 0,
+        translateX: "-150vw",
         ease: "none",
         duration: 1,
         scrollTrigger: {
-          trigger: RtriggerRef.current,
+          trigger: rRef.current,
           start: "top top",
-          end: "bottom center",
+          end: "bottom top",
           scrub: true,
           pin: true,
         },
@@ -36,26 +31,22 @@ const Research = () => {
     );
 
     return () => {
-      pinR.kill();
+      tl.kill();
     };
   }, []);
-
   return (
-    <div className="w-full flex flex-col justify-center gap-[31px] min-h-screen">
+    <div
+      className="w-full flex flex-col justify-center gap-[31px] min-h-screen"
+      ref={rRef}
+    >
       <div className="bg-emelered rounded-[20px] p-[6px_32px] font-bold w-fit text-[20px] leading-normal relative z-[1]">
         Research Works
       </div>
-      <div
-        className="research-wrapper w-full overflow-x-hidden"
-        ref={RtriggerRef}
-      >
-        <div
-          className="w-full flex items-start gap-[31px]"
-          ref={ResearchContainer}
-        >
-          {postArticles.map((article, i) => (
+      <div className="research-wrapper w-full overflow-x-hidden">
+        <div className="w-full flex items-start gap-[31px]" ref={rCRef}>
+          {postArticles.map((rarticle, i) => (
             <div
-              key={article.id}
+              key={rarticle.id}
               className="flex flex-col gap-5 flex-shrink-0 w-full md:w-1/3 rounded-[5px]"
             >
               <Image
@@ -65,13 +56,13 @@ const Research = () => {
                 height={900}
               />
               <h3 className="text-2xl md:text-[48px] text-[#d2d2d2] font-semibold capitalize">
-                {article.title}
+                {rarticle.title}
               </h3>
               <p className="text-base md:text-[20px] font-normal md:leading-[32px]">
-                {article.excerpt}
+                {rarticle.excerpt}
               </p>
               <Link
-                href={article.Link}
+                href={rarticle.Link}
                 target="_blank"
                 className="underline text-base md:text-[20px]"
               >

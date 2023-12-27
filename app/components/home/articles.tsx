@@ -7,28 +7,23 @@ import React, { useLayoutEffect, useRef } from "react";
 
 const Articles = () => {
   const triggerRef = useRef(null);
-  const articlesContainer = useRef<HTMLDivElement>(null);
+  const articlesContainer = useRef(null);
 
   gsap.registerPlugin(ScrollTrigger);
   useLayoutEffect(() => {
-    if (!articlesContainer.current) return; // Add null check
-    const articlesContainerWidth = articlesContainer.current.offsetWidth;
-    const amountToScroll = articlesContainerWidth - window.innerWidth;
     const pin = gsap.fromTo(
       articlesContainer.current,
       {
         translateX: 0,
-        opacity: 1,
       },
       {
-        translateX: amountToScroll * 20,
-        opacity: 0,
+        translateX: "-150vw",
         ease: "none",
         duration: 1,
         scrollTrigger: {
           trigger: triggerRef.current,
           start: "top top",
-          end: "bottom center",
+          end: "bottom top",
           scrub: true,
           pin: true,
         },
@@ -41,16 +36,16 @@ const Articles = () => {
   }, []);
 
   return (
-    <div className="w-full flex flex-col justify-center gap-[31px] min-h-screen">
+    <div
+      className="w-full flex flex-col justify-center gap-[31px] min-h-screen"
+      ref={triggerRef}
+    >
       <div className="bg-emelered rounded-[20px] p-[6px_32px] font-bold w-fit text-[20px] leading-normal relative z-[1]">
         Articles
       </div>
-      <div
-        className="articles-wrapper w-full overflow-x-hidden"
-        ref={triggerRef}
-      >
+      <div className="articles-wrapper w-full overflow-x-hidden">
         <div
-          className="w-full flex items-start gap-[31px]"
+          className="w-full flex items-start gap-[31px] h-fit"
           ref={articlesContainer}
         >
           {postArticles.map((article, index) => (
