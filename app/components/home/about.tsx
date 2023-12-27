@@ -74,8 +74,8 @@ const About = () => {
         <Image
           src="/emele.jpg"
           alt="Emele"
-          width={100}
-          height={100}
+          width={1920}
+          height={900}
           className="absolute w-full h-full object-cover emeleimg z-0 opacity-0 scale-[0.98]"
         />
       </div>
