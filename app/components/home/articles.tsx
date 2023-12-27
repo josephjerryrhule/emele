@@ -1,15 +1,40 @@
-import { postArticles } from "@/app/constants";
+import axios from "axios";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 const Articles = () => {
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://emele.joeydutch.com/wp-json/wp/v2/articles`,
+          {
+            params: {
+              per_page: 8,
+              _embed: "",
+              order: "desc",
+            },
+          }
+        );
+        setArticles(response.data);
+      } catch (error) {
+        console.error("Error fetching data from WordPress:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const triggerRef = useRef(null);
   const articlesContainer = useRef(null);
 
   gsap.registerPlugin(ScrollTrigger);
+
   useLayoutEffect(() => {
     const pin = gsap.fromTo(
       articlesContainer.current,
@@ -48,25 +73,29 @@ const Articles = () => {
           className="w-full flex items-start gap-[31px] h-fit"
           ref={articlesContainer}
         >
-          {postArticles.map((article, index) => (
+          {articles.map((article, index) => (
             <div
               key={article.id}
               className="flex flex-col gap-5 flex-shrink-0 w-full md:w-1/3 rounded-[5px]"
             >
               <Image
-                src="/placeholder.png"
-                alt="placeholder"
+                src={article._embedded["wp:featuredmedia"][0].source_url}
+                alt={article._embedded["wp:featuredmedia"][0].alt_text}
                 width={1920}
                 height={900}
+                className="w-full h-[391px] object-cover object-center"
               />
-              <h3 className="text-2xl md:text-[48px] text-[#d2d2d2] font-semibold capitalize">
-                {article.title}
+              <h3 className="text-2xl md:text-[48px] text-[#d2d2d2] font-semibold capitalize md:leading-[50px]">
+                {article.title.rendered}
               </h3>
-              <p className="text-base md:text-[20px] font-normal md:leading-[32px]">
-                {article.excerpt}
-              </p>
+
+              <p
+                className="text-base md:text-[20px] font-normal md:leading-[32px]"
+                dangerouslySetInnerHTML={{ __html: article.excerpt.rendered }}
+              />
+
               <Link
-                href={article.Link}
+                href={article.acf.link.url}
                 target="_blank"
                 className="underline text-base md:text-[20px]"
               >
