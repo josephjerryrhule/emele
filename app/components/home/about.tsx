@@ -71,9 +71,6 @@ const About = () => {
           A Medical Laboratory Scientist.
           <br />A Digital Marketer, Founder of WMF.
         </h2>
-        <div className="absolute bottom-0 right-0 text-[12px] font-normal uppercase z-[1]">
-          Scroll
-        </div>
         <Image
           src="/emele.jpg"
           alt="Emele"

@@ -6,6 +6,7 @@ import Lenis from "@studio-freight/lenis";
 import About from "./components/home/about";
 import Articles from "./components/home/articles";
 import Research from "./components/home/research";
+import ShowCase from "./components/home/showcase";
 
 export default function Home() {
   useEffect(() => {
@@ -28,6 +29,7 @@ export default function Home() {
         <About />
         <Articles />
         <Research />
+        <ShowCase />
       </div>
     </main>
   );

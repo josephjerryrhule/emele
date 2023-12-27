@@ -32,9 +32,6 @@ const Intro = () => {
       <h1>
         hello <br /> there...
       </h1>
-      <div className="absolute -bottom-10 right-0 text-[12px] font-normal">
-        Scroll
-      </div>
     </div>
   );
 };
