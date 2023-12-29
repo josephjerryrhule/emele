@@ -5,8 +5,29 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 
+interface ArticleItem {
+  id: number;
+  title: {
+    rendered: string;
+  };
+  acf: {
+    link: {
+      url: string;
+    };
+  };
+  excerpt: {
+    rendered: string;
+  };
+  _embedded: {
+    "wp:featuredmedia": {
+      source_url: string;
+      alt_text: string;
+    }[];
+  };
+}
+
 const Articles = () => {
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState<ArticleItem[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {

@@ -6,8 +6,29 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 
+interface ResearchItem {
+  id: number;
+  title: {
+    rendered: string;
+  };
+  acf: {
+    link: {
+      url: string;
+    };
+  };
+  excerpt: {
+    rendered: string;
+  };
+  _embedded: {
+    "wp:featuredmedia": {
+      source_url: string;
+      alt_text: string;
+    }[];
+  };
+}
+
 const Research = () => {
-  const [works, setWorks] = useState([]);
+  const [works, setWorks] = useState<ResearchItem[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
