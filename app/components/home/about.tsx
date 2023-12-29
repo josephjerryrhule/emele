@@ -6,7 +6,7 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 const About = () => {
   const abouttext = useRef(null);
   const text = useRef(null);
-  const movingText = useRef(null);
+  const movingText = useRef<HTMLParagraphElement>(null);
   const [isMouseOver, setIsMouseOver] = useState(false);
 
   const handleMouseOver = () => {
