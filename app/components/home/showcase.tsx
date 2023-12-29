@@ -87,7 +87,7 @@ const ShowCase = () => {
           {cases.map((case_item, i) => (
             <div
               key={case_item.id}
-              className="w-full relative h-[260px] overflow-clip group rounded-xl case-item opacity-0"
+              className="w-full relative h-[400px] overflow-clip group rounded-xl case-item opacity-0"
             >
               <Image
                 src={case_item._embedded["wp:featuredmedia"][0].source_url}

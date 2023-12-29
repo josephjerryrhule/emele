@@ -84,7 +84,7 @@ const Causes = () => {
         >
           {cause.map((causes, i) => (
             <div
-              className={`col-span-1 h-[260px] rounded-[20px] causeitem opacity-0 relative overflow-clip group ${
+              className={`col-span-1 h-[400px] causeitem opacity-0 relative overflow-clip group rounded-[5px] ${
                 i === 0
                   ? "sm:col-span-3 md:col-span-3 lg:col-span-3 xl:col-span-3 md:h-[464px] mb-[31px]"
                   : "mb-5 ml-3 mr-3 md:ml-0 md:mr-0 md:mb-0"
@@ -96,9 +96,9 @@ const Causes = () => {
                 alt={causes._embedded["wp:featuredmedia"][0].alt_text}
                 width={1920}
                 height={900}
-                className="h-full rounded-[20px] object-cover object-center"
+                className="h-full object-cover object-center"
               />
-              <div className="w-full h-full absolute top-0 bg-gradient-to-b from-[#0000001b] to-[#000] rounded-[20px] flex flex-col justify-end p-5 text-[#d2d2d2]">
+              <div className="w-full h-full absolute top-0 bg-gradient-to-b from-[#0000001b] to-[#000] flex flex-col justify-end p-5 text-[#d2d2d2] rounded-[5px]">
                 <Link href={causes.acf.link.url} target="_blank">
                   <h3
                     className={`text-2xl font-semibold translate-y-[100%] transition-transform duration-300 ease-in-out group-hover:translate-y-0 ${
