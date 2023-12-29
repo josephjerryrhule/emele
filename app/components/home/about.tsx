@@ -62,18 +62,21 @@ const About = () => {
             ref={text}
             onMouseOver={handleMouseOver}
             onMouseOut={handleMouseOut}
-            className="emele-bg"
+            className="emele-bg hover:underline"
           >
             Emele Arthur-Hayford
           </span>
           .
           <br />
           A Medical Laboratory Scientist.
-          <br />A Digital Marketer, Founder of WMF.
+          <br />A Health Advocate & Marketer,
+          <br />
+          Social Media Manager, Founder
+          <br /> of World Movers Team.
         </h2>
         <Image
-          src="/emele.jpg"
-          alt="Emele"
+          src="/emele.png"
+          alt="Emele Arthur-Hayford"
           width={1920}
           height={900}
           className="absolute w-full h-full object-cover emeleimg z-0 opacity-0 scale-[0.98]"
