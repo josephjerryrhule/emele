@@ -6,6 +6,7 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 const About = () => {
   const abouttext = useRef(null);
   const text = useRef(null);
+  const movingText = useRef(null);
   const [isMouseOver, setIsMouseOver] = useState(false);
 
   const handleMouseOver = () => {
@@ -36,6 +37,32 @@ const About = () => {
       { opacity: 1, y: 50 },
       "+=1"
     );
+
+    const textElement = movingText.current;
+
+    if (textElement) {
+      const tl = gsap.timeline({ repeat: -1 });
+
+      //Create clones and repeat the animation
+      for (let i = 1; i < 5; i++) {
+        const clone = textElement.cloneNode(true) as HTMLParagraphElement;
+
+        if (textElement.parentNode) {
+          textElement.parentNode.appendChild(clone);
+
+          gsap.set(clone, { marginLeft: "200px" });
+        }
+      }
+
+      gsap.set(".emelemovingtext", { x: "0%" });
+
+      //Animate all elements to the left
+      tl.to(".emelemovingtext", {
+        x: "-100%",
+        duration: 30,
+        ease: "linear",
+      });
+    }
   }, []);
 
   useLayoutEffect(() => {
@@ -49,7 +76,7 @@ const About = () => {
   return (
     <div className="about-wrapper">
       <div
-        className="w-full text-5xl md:text-[98px] text-[#d2d2d2] font-bold md:leading-[100px] flex flex-col justify-center opacity-80 md:opacity-0 min-h-screen relative"
+        className="w-full text-[38px] leading-[70px] md:text-[98px] text-[#d2d2d2] font-bold md:leading-[100px] flex flex-col justify-center opacity-80 md:opacity-0 min-h-screen relative"
         ref={abouttext}
         id="about"
       >
@@ -74,6 +101,15 @@ const About = () => {
           Social Media Manager, Founder
           <br /> of World Movers Team.
         </h2>
+        <div className="flex items-center flex-nowrap emelemoving-textwrapper overflow-clip whitespace-nowrap">
+          <p
+            className="w-[120vw] text-3xl md:text-[64px] font-bold pt-32 pb-32 emelemovingtext"
+            ref={movingText}
+          >
+            Revolutionizing Healthcare Delivery and Driving Change Through
+            Innovation
+          </p>
+        </div>
         <Image
           src="/emele.png"
           alt="Emele Arthur-Hayford"
