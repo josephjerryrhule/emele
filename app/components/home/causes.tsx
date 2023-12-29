@@ -96,7 +96,7 @@ const Causes = () => {
                 alt={causes._embedded["wp:featuredmedia"][0].alt_text}
                 width={1920}
                 height={900}
-                className="h-full rounded-[20px] object-cover"
+                className="h-full rounded-[20px] object-cover object-center"
               />
               <div className="w-full h-full absolute top-0 bg-gradient-to-b from-[#0000001b] to-[#000] rounded-[20px] flex flex-col justify-end p-5 text-[#d2d2d2]">
                 <Link href={causes.acf.link.url} target="_blank">
