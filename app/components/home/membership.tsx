@@ -55,7 +55,7 @@ const Membership = () => {
     });
 
     tl.to(
-      ".logoitem",
+      ".logo-item",
       {
         opacity: 1,
         y: -20,
@@ -72,10 +72,13 @@ const Membership = () => {
       <div className="bg-emelered rounded-[20px] p-[6px_32px] font-bold w-fit text-[20px] leading-normal relative z-[1]">
         Membership
       </div>
-      <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center md:max-w-screen-md">
+      <div
+        className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center md:max-w-screen-md gap-10"
+        ref={Container}
+      >
         {logo.map((logos, i) => (
           <div
-            className="w-full logoitem opacity-0"
+            className="w-full logo-item opacity-0 max-w-[120px]"
             key={logos.id}
             title={logos.title.rendered}
           >
@@ -86,6 +89,7 @@ const Membership = () => {
               height={
                 logos._embedded["wp:featuredmedia"][0].media_details.height
               }
+              className="w-full"
             />
           </div>
         ))}
