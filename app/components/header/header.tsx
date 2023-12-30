@@ -11,9 +11,9 @@ const HeaderComponent = () => {
         </Link>
       </div>
       <div className="navlinksarea flex items-center gap-5 font-semibold">
-        <Link href="#home">Home</Link>
+        <Link href="/">Home</Link>
         <Link href="#about">About</Link>
-        <Link href="#about">Contact</Link>
+        <Link href="#contact">Contact</Link>
       </div>
     </div>
   );
