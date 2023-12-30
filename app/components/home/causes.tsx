@@ -22,6 +22,10 @@ interface CausesItem {
     "wp:featuredmedia": {
       source_url: string;
       alt_text: string;
+      media_details: {
+        width: number;
+        height: number;
+      };
     }[];
   };
 }
@@ -94,8 +98,12 @@ const Causes = () => {
               <Image
                 src={causes._embedded["wp:featuredmedia"][0].source_url}
                 alt={causes._embedded["wp:featuredmedia"][0].alt_text}
-                width={1920}
-                height={900}
+                width={
+                  causes._embedded["wp:featuredmedia"][0].media_details.width
+                }
+                height={
+                  causes._embedded["wp:featuredmedia"][0].media_details.height
+                }
                 className="h-full object-cover object-center"
               />
               <div className="w-full h-full absolute top-0 bg-gradient-to-b from-[#0000001b] to-[#000] flex flex-col justify-end p-5 text-[#d2d2d2] rounded-[5px]">

@@ -22,6 +22,10 @@ interface ArticleItem {
     "wp:featuredmedia": {
       source_url: string;
       alt_text: string;
+      media_details: {
+        width: number;
+        height: number;
+      };
     }[];
   };
 }
@@ -102,8 +106,12 @@ const Articles = () => {
               <Image
                 src={article._embedded["wp:featuredmedia"][0].source_url}
                 alt={article._embedded["wp:featuredmedia"][0].alt_text}
-                width={1920}
-                height={900}
+                width={
+                  article._embedded["wp:featuredmedia"][0].media_details.width
+                }
+                height={
+                  article._embedded["wp:featuredmedia"][0].media_details.height
+                }
                 className="w-full h-[391px] object-cover object-center"
               />
               <h3 className="text-2xl md:text-[48px] text-[#d2d2d2] font-semibold capitalize md:leading-[50px]">
