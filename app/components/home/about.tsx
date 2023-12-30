@@ -44,13 +44,11 @@ const About = () => {
       const tl = gsap.timeline({ repeat: -1 });
 
       //Create clones and repeat the animation
-      for (let i = 1; i < 5; i++) {
+      for (let i = 1; i < 2; i++) {
         const clone = textElement.cloneNode(true) as HTMLParagraphElement;
 
         if (textElement.parentNode) {
           textElement.parentNode.appendChild(clone);
-
-          gsap.set(clone, { marginLeft: "200px" });
         }
       }
 
@@ -103,7 +101,7 @@ const About = () => {
         </h2>
         <div className="flex items-center flex-nowrap emelemoving-textwrapper overflow-clip whitespace-nowrap">
           <p
-            className="md:w-[199vw] lg:w-[145vw] xl:w-[110vw] mr-[40px] text-3xl md:text-[64px] font-bold pt-32 pb-32 emelemovingtext"
+            className="md:w-[199vw] lg:w-[145vw] xl:w-[155vw] xxl:w-[125vw] mr-[40px] text-3xl md:text-[64px] font-bold pt-32 pb-32 emelemovingtext"
             ref={movingText}
           >
             Revolutionizing Healthcare Delivery and Driving Change Through

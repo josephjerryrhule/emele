@@ -13,6 +13,8 @@ const FooterComponent = () => {
       >
         Linkedin
       </Link>
+      <Link href="https:twitter.com">Twitter</Link>
+      <Link href="#">Resume</Link>
     </div>
   );
 };
