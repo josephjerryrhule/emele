@@ -76,7 +76,7 @@ const About = () => {
   return (
     <div className="about-wrapper">
       <div
-        className="w-full text-[38px] leading-[70px] md:text-[98px] text-[#d2d2d2] font-bold md:leading-[100px] flex flex-col justify-center opacity-80 md:opacity-0 min-h-screen relative"
+        className="w-full text-[38px] leading-[70px] md:text-[42px] lg:text-[98px] text-[#d2d2d2] font-bold md:leading-[100px] flex flex-col justify-center opacity-80 md:opacity-0 min-h-screen relative"
         ref={abouttext}
         id="about"
       >
@@ -103,7 +103,7 @@ const About = () => {
         </h2>
         <div className="flex items-center flex-nowrap emelemoving-textwrapper overflow-clip whitespace-nowrap">
           <p
-            className="w-[120vw] text-3xl md:text-[64px] font-bold pt-32 pb-32 emelemovingtext"
+            className="md:w-[199vw] lg:w-[145vw] xl:w-[110vw] mr-[40px] text-3xl md:text-[64px] font-bold pt-32 pb-32 emelemovingtext"
             ref={movingText}
           >
             Revolutionizing Healthcare Delivery and Driving Change Through
