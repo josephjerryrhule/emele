@@ -1,8 +1,10 @@
+/* eslint-disable @next/next/inline-script-id */
 import type { Metadata } from "next";
 import "./globals.css";
 import HeaderComponent from "./components/header/header";
 import FooterComponent from "./components/footer/footer";
 import { Open_Sans } from "next/font/google";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Emele Arthur-Hayford",
@@ -21,6 +23,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GID}`}
+      />
+      <Script strategy="lazyOnload">
+        {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', '${process.env.NEXT_PUBLIC_GID}');
+      `}
+      </Script>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
