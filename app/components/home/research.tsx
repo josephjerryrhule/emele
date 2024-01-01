@@ -19,15 +19,13 @@ interface ResearchItem {
   excerpt: {
     rendered: string;
   };
-  _embedded: {
-    "wp:featuredmedia": {
-      source_url: string;
-      alt_text: string;
-      media_details: {
-        width: number;
-        height: number;
-      };
-    }[];
+  better_featured_image: {
+    source_url: string;
+    alt_text: string;
+    media_details: {
+      width: number;
+      height: number;
+    };
   };
 }
 
@@ -100,14 +98,10 @@ const Research = () => {
               className="flex flex-col gap-5 flex-shrink-0 w-full md:w-1/3 rounded-[5px]"
             >
               <Image
-                src={rarticle._embedded["wp:featuredmedia"][0].source_url}
-                alt={rarticle._embedded["wp:featuredmedia"][0].alt_text}
-                width={
-                  rarticle._embedded["wp:featuredmedia"][0].media_details.width
-                }
-                height={
-                  rarticle._embedded["wp:featuredmedia"][0].media_details.height
-                }
+                src={rarticle.better_featured_image.source_url}
+                alt={rarticle.better_featured_image.alt_text}
+                width={rarticle.better_featured_image.media_details.width}
+                height={rarticle.better_featured_image.media_details.height}
                 className="w-full h-[391px] object-cover object-center"
               />
               <h3 className="text-2xl md:text-[48px] text-[#d2d2d2] font-semibold capitalize md:leading-[50px] leading-[30px]">

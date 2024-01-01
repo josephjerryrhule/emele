@@ -18,15 +18,13 @@ interface CausesItem {
   excerpt: {
     rendered: string;
   };
-  _embedded: {
-    "wp:featuredmedia": {
-      source_url: string;
-      alt_text: string;
-      media_details: {
-        width: number;
-        height: number;
-      };
-    }[];
+  better_featured_image: {
+    source_url: string;
+    alt_text: string;
+    media_details: {
+      width: number;
+      height: number;
+    };
   };
 }
 
@@ -96,14 +94,10 @@ const Causes = () => {
               key={causes.id}
             >
               <Image
-                src={causes._embedded["wp:featuredmedia"][0].source_url}
-                alt={causes._embedded["wp:featuredmedia"][0].alt_text}
-                width={
-                  causes._embedded["wp:featuredmedia"][0].media_details.width
-                }
-                height={
-                  causes._embedded["wp:featuredmedia"][0].media_details.height
-                }
+                src={causes.better_featured_image.source_url}
+                alt={causes.better_featured_image.alt_text}
+                width={causes.better_featured_image.media_details.width}
+                height={causes.better_featured_image.media_details.height}
                 className="h-full object-cover object-center"
               />
               <div className="w-full h-full absolute top-0 bg-gradient-to-b from-[#0000001b] to-[#000] flex flex-col justify-end p-5 text-[#d2d2d2] rounded-[5px]">

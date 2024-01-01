@@ -9,15 +9,13 @@ interface LogoItem {
   title: {
     rendered: string;
   };
-  _embedded: {
-    "wp:featuredmedia": {
-      source_url: string;
-      alt_text: string;
-      media_details: {
-        width: number;
-        height: number;
-      };
-    }[];
+  better_featured_image: {
+    source_url: string;
+    alt_text: string;
+    media_details: {
+      width: number;
+      height: number;
+    };
   };
 }
 
@@ -83,12 +81,10 @@ const Membership = () => {
             title={logos.title.rendered}
           >
             <Image
-              src={logos._embedded["wp:featuredmedia"][0].source_url}
-              alt={logos._embedded["wp:featuredmedia"][0].alt_text}
-              width={logos._embedded["wp:featuredmedia"][0].media_details.width}
-              height={
-                logos._embedded["wp:featuredmedia"][0].media_details.height
-              }
+              src={logos.better_featured_image.source_url}
+              alt={logos.better_featured_image.alt_text}
+              width={logos.better_featured_image.media_details.width}
+              height={logos.better_featured_image.media_details.height}
               className="w-full"
             />
           </div>

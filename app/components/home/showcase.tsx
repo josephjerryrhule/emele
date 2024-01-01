@@ -18,15 +18,13 @@ interface CaseItem {
   excerpt: {
     rendered: string;
   };
-  _embedded: {
-    "wp:featuredmedia": {
-      source_url: string;
-      alt_text: string;
-      media_details: {
-        width: number;
-        height: number;
-      };
-    }[];
+  better_featured_image: {
+    source_url: string;
+    alt_text: string;
+    media_details: {
+      width: number;
+      height: number;
+    };
   };
 }
 
@@ -94,15 +92,10 @@ const ShowCase = () => {
               className="w-full relative h-[400px] overflow-clip group rounded-xl case-item opacity-0"
             >
               <Image
-                src={case_item._embedded["wp:featuredmedia"][0].source_url}
-                alt={case_item._embedded["wp:featuredmedia"][0].alt_text}
-                width={
-                  case_item._embedded["wp:featuredmedia"][0].media_details.width
-                }
-                height={
-                  case_item._embedded["wp:featuredmedia"][0].media_details
-                    .height
-                }
+                src={case_item.better_featured_image.source_url}
+                alt={case_item.better_featured_image.alt_text}
+                width={case_item.better_featured_image.media_details.width}
+                height={case_item.better_featured_image.media_details.height}
                 className="w-full h-full scale-[1] transition-all duration-300 ease-in-out group-hover:scale[1.1] object-cover object-center"
               />
               <div className="w-full h-full absolute top-0 z-[1] bg-gradient-to-b from-[#d9d9d01b] to-[#00000085] p-5 flex flex-col justify-end">
