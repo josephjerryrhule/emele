@@ -28,7 +28,7 @@ const Membership = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://emele.joeydutch.com/wp-json/wp/v2/memberships`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/memberships`,
           {
             params: {
               _embed: "",

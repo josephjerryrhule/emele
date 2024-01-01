@@ -38,7 +38,7 @@ const Research = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://emele.joeydutch.com/wp-json/wp/v2/works`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/works`,
           {
             params: {
               per_page: 8,
