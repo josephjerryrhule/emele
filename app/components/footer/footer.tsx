@@ -26,7 +26,6 @@ const FooterComponent = () => {
         <form
           action=""
           className="w-full bg-transparent border-b flex items-center justify-between text-[14px] pb-2"
-          netlify
         >
           <input
             type="email"
