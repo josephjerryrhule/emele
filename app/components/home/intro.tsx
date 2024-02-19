@@ -30,7 +30,7 @@ const Intro = () => {
       ref={introtext}
     >
       <h1>
-        hello <br /> there...
+        Coming <br /> Soon...
       </h1>
     </div>
   );

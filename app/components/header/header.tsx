@@ -19,13 +19,13 @@ const HeaderComponent = () => {
         </Link>
       </div>
       <div className="navlinksarea flex items-center gap-5 font-semibold">
-        <Link href="/">Home</Link>
+        {/*   <Link href="/">Home</Link>
         <Link href="#about" onClick={() => scrollToSection("about")}>
           About
         </Link>
         <Link href="#contact" onClick={() => scrollToSection("contact")}>
           Contact
-        </Link>
+        </Link> */}
       </div>
     </nav>
   );

@@ -2,8 +2,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import HeaderComponent from "./components/header/header";
-import FooterComponent from "./components/footer/footer";
-import { Open_Sans } from "next/font/google";
+/* import FooterComponent from "./components/footer/footer";
+ */ import { Open_Sans } from "next/font/google";
 import Script from "next/script";
 
 export const metadata: Metadata = {
@@ -46,7 +46,7 @@ export default function RootLayout({
       >
         <HeaderComponent />
         {children}
-        <FooterComponent />
+        {/*  <FooterComponent /> */}
       </body>
     </html>
   );
